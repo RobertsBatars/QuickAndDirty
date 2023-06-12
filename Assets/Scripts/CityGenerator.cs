@@ -5,12 +5,14 @@ using UnityEngine;
 public class CityGenerator : MonoBehaviour
 {
     public Vector2 resolution;
+    [SerializeField] GameObject startingTile;
     private List<List<Tile>> tiles;
 
     // Start is called before the first frame update
     void Start()
     {
         InitTiles();
+        PlaceRoadTile((int)resolution.x / 2, (int)resolution.y/2);
     }
 
     void InitTiles()
@@ -35,7 +37,7 @@ public class CityGenerator : MonoBehaviour
     {
 
     }
-    void PlaceRoadTile()
+    void PlaceRoadTile(int x, int y)
     {
 
     }

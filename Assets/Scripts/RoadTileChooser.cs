@@ -22,8 +22,46 @@ public class RoadTileChooser : MonoBehaviour
         List<Tile> acceptableTiles = new List<Tile>();
         foreach (Tile candidate in endTileAcceptedPositions)
         {
-
+            if (MatchTile(tile, candidate))
+            {
+                Tile tmp = new Tile(candidate.top, candidate.bottom, candidate.right, candidate.left, candidate.rotation, endTile);
+                acceptableTiles.Add(tmp);
+            }
         }
+        foreach (Tile candidate in straightTileAcceptedPositions)
+        {
+            if (MatchTile(tile, candidate))
+            {
+                Tile tmp = new Tile(candidate.top, candidate.bottom, candidate.right, candidate.left, candidate.rotation, straightTile);
+                acceptableTiles.Add(tmp);
+            }
+        }
+        foreach (Tile candidate in curvedTileAcceptedPositions)
+        {
+            if (MatchTile(tile, candidate))
+            {
+                Tile tmp = new Tile(candidate.top, candidate.bottom, candidate.right, candidate.left, candidate.rotation, curvedTile);
+                acceptableTiles.Add(tmp);
+            }
+        }
+        foreach (Tile candidate in threeWayTileAcceptedPositions)
+        {
+            if (MatchTile(tile, candidate))
+            {
+                Tile tmp = new Tile(candidate.top, candidate.bottom, candidate.right, candidate.left, candidate.rotation, threeWayTile);
+                acceptableTiles.Add(tmp);
+            }
+        }
+        foreach (Tile candidate in fourWayTileAcceptedPositions)
+        {
+            if (MatchTile(tile, candidate))
+            {
+                Tile tmp = new Tile(candidate.top, candidate.bottom, candidate.right, candidate.left, candidate.rotation, fourWayTile);
+                acceptableTiles.Add(tmp);
+            }
+        }
+        result = acceptableTiles[Random.Range(0, acceptableTiles.Count)];
+        return result;
     }
 
     private bool MatchTile(Tile emptyTile, Tile candidate)
@@ -44,13 +82,17 @@ public class RoadTileChooser : MonoBehaviour
         {
             return true;
         }
-        else
+
+        if (empt == 1 && cand == 1)
         {
-            if (empt == 1 && cand == 1)
-            {
-                return true;
-            }
+            return true;
         }
+
+        if (empt == -1 && cand == 0)
+        {
+            return true;
+        }
+
         return false;
     }
 }
