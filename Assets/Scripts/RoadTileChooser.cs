@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RoadTileChooser : MonoBehaviour
 {
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,14 @@ public class RoadTileChooser : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void GenerateCity()
+    {
+
+    }
+    void PlaceRoadTile()
+    {
+
     }
 }
