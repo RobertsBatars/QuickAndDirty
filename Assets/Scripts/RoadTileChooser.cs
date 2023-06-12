@@ -61,10 +61,6 @@ public class RoadTileChooser : MonoBehaviour
             }
         }
         result = acceptableTiles[Random.Range(0, acceptableTiles.Count)];
-        Debug.Log(result.top);
-        Debug.Log(result.bottom);
-        Debug.Log(result.left);
-        Debug.Log(result.right);
         return result;
     }
 

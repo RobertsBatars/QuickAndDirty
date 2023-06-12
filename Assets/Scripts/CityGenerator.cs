@@ -53,19 +53,47 @@ public class CityGenerator : MonoBehaviour
 
         if (y > 0)
         {
-            tiles[y - 1][x].top = tile.bottom;
+            if (tile.bottom == 0)
+            {
+                tiles[y - 1][x].top = -1;
+            }
+            else
+            {
+                tiles[y - 1][x].top = tile.bottom;
+            }
         }
         if (y < resolution.y-1)
         {
-            tiles[y + 1][x].bottom = tile.top;
+            if (tile.top == 0)
+            {
+                tiles[y + 1][x].bottom = -1;
+            }
+            else
+            {
+                tiles[y + 1][x].bottom = tile.top;
+            }
         }
         if (x < resolution.x-1)
         {
-            tiles[y][x + 1].left = tile.right;
+            if (tile.right == 0)
+            {
+                tiles[y][x + 1].left = -1;
+            }
+            else
+            {
+                tiles[y][x + 1].left = tile.right;
+            }
         }
         if (x > 0)
         {
-            tiles[y][x - 1].right = tile.left;
+            if (tile.left == 0)
+            {
+                tiles[y][x - 1].right = -1;
+            }
+            else
+            {
+                tiles[y][x - 1].right = tile.left;
+            }
         }
 
 
