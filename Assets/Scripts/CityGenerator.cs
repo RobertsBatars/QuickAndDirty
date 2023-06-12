@@ -48,7 +48,7 @@ public class CityGenerator : MonoBehaviour
             return;
         }
         Tile tile = chooser.ChooseAcceptableRoadTile(tiles[y][x]);
-        Instantiate(tile.tile, new Vector3(-x * 10, 0, -y*10), Quaternion.Euler(0, tile.rotation, 0));
+        Instantiate(tile.tile, new Vector3(x * 10, 0, y*10), Quaternion.Euler(0, tile.rotation, 0));
         tiles[y][x] = tile;
 
         if (y > 0)
