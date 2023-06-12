@@ -48,27 +48,40 @@ public class CityGenerator : MonoBehaviour
             return;
         }
         Tile tile = chooser.ChooseAcceptableRoadTile(tiles[y][x]);
-        Instantiate(tile.tile, new Vector3(x * 5, y * 5, 0), Quaternion.Euler(0, tile.rotation, 0));
+        Instantiate(tile.tile, new Vector3(-x * 10, 0, -y*10), Quaternion.Euler(0, tile.rotation, 0));
+        tiles[y][x] = tile;
 
-        tiles[y - 1][x].top = tile.bottom;
-        tiles[y + 1][x].bottom = tile.top;
-        tiles[y][x + 1].left = tile.right;
-        tiles[y][x - 1].right = tile.left;
+        if (y > 0)
+        {
+            tiles[y - 1][x].top = tile.bottom;
+        }
+        if (y < resolution.y-1)
+        {
+            tiles[y + 1][x].bottom = tile.top;
+        }
+        if (x < resolution.x-1)
+        {
+            tiles[y][x + 1].left = tile.right;
+        }
+        if (x > 0)
+        {
+            tiles[y][x - 1].right = tile.left;
+        }
 
 
-        if (tile.top == 1)
+        if (y < resolution.y-1 && tile.top == 1 && tiles[y + 1][x].tile == null)
         {
             PlaceRoadTile(x, y + 1);
         }
-        if (tile.bottom == 1)
+        if (y > 0 && tile.bottom == 1 && tiles[y - 1][x].tile == null)
         {
             PlaceRoadTile(x, y - 1);
         }
-        if (tile.left == 1)
+        if (x > 0 && tile.left == 1 && tiles[y][x - 1].tile == null)
         {
             PlaceRoadTile(x - 1, y);
         }
-        if (tile.right == 1)
+        if (x < resolution.x-1 && tile.right == 1 && tiles[y][x + 1].tile == null)
         {
             PlaceRoadTile(x + 1, y);
         }

@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db6147804641d964eb771dbc78ae57a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: {x: 10, y: 10}
+  resolution: {x: 2, y: 2}
   startingTile: {fileID: 4867163758597302230, guid: 0d3ee7b142552dc4c9919b64020a983b,
     type: 3}
 --- !u!4 &505737124
