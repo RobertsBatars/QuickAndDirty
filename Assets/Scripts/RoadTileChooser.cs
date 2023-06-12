@@ -9,15 +9,48 @@ public class RoadTileChooser : MonoBehaviour
     [SerializeField] private List<Tile> curvedTileAcceptedPositions;
     [SerializeField] private List<Tile> threeWayTileAcceptedPositions;
     [SerializeField] private List<Tile> fourWayTileAcceptedPositions;
-    // Start is called before the first frame update
-    void Start()
+    [Space]
+    [SerializeField] private GameObject endTile;
+    [SerializeField] private GameObject straightTile;
+    [SerializeField] private GameObject curvedTile;
+    [SerializeField] private GameObject threeWayTile;
+    [SerializeField] private GameObject fourWayTile;
+
+    public Tile ChooseAcceptableRoadTile(Tile tile)
     {
-        
+        Tile result;
+        List<Tile> acceptableTiles = new List<Tile>();
+        foreach (Tile candidate in endTileAcceptedPositions)
+        {
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private bool MatchTile(Tile emptyTile, Tile candidate)
     {
-        
+        if (CheckIfMatchesOpening(emptyTile.bottom, candidate.bottom) && CheckIfMatchesOpening(emptyTile.top, candidate.top) && CheckIfMatchesOpening(emptyTile.right, candidate.right) && CheckIfMatchesOpening(emptyTile.left, candidate.left))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private bool CheckIfMatchesOpening(int empt, int cand)
+    {
+        if (empt == 0)
+        {
+            return true;
+        }
+        else
+        {
+            if (empt == 1 && cand == 1)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
