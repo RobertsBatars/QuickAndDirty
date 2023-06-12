@@ -15,11 +15,12 @@ public class CityGenerator : MonoBehaviour
     {
         InitTiles();
         chooser = GetComponent<RoadTileChooser>();
-        PlaceRoadTile((int)resolution.x / 2, (int)resolution.y/2);
+        GenerateCity();
     }
 
     void InitTiles()
     {
+        tiles = new List<List<Tile>>();
         for (int i = 0; i < resolution.y; i++)
         {
             tiles.Add(new List<Tile>());
@@ -38,7 +39,7 @@ public class CityGenerator : MonoBehaviour
 
     void GenerateCity()
     {
-
+        PlaceRoadTile((int)resolution.x / 2, (int)resolution.y / 2);
     }
     void PlaceRoadTile(int x, int y)
     {
@@ -47,11 +48,29 @@ public class CityGenerator : MonoBehaviour
             return;
         }
         Tile tile = chooser.ChooseAcceptableRoadTile(tiles[y][x]);
-        Instantiate(tile.tile, new Vector3(x * 10, y * 10, 0), Quaternion.Euler(0, tile.rotation, 0));
-        
+        Instantiate(tile.tile, new Vector3(x * 5, y * 5, 0), Quaternion.Euler(0, tile.rotation, 0));
+
+        tiles[y - 1][x].top = tile.bottom;
+        tiles[y + 1][x].bottom = tile.top;
+        tiles[y][x + 1].left = tile.right;
+        tiles[y][x - 1].right = tile.left;
+
+
         if (tile.top == 1)
         {
             PlaceRoadTile(x, y + 1);
+        }
+        if (tile.bottom == 1)
+        {
+            PlaceRoadTile(x, y - 1);
+        }
+        if (tile.left == 1)
+        {
+            PlaceRoadTile(x - 1, y);
+        }
+        if (tile.right == 1)
+        {
+            PlaceRoadTile(x + 1, y);
         }
     }
 }
