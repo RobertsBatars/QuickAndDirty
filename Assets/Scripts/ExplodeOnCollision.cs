@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExplodeOnCollision : MonoBehaviour
 {
-    [SerializeField] GameObject explodedPrefab;
+    public GameObject explodedPrefab;
 
     private void OnCollisionEnter(Collision collision)
     {
