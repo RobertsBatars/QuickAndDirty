@@ -23,7 +23,7 @@ public class EnviromentPlacer : MonoBehaviour
                 RaycastHit ground;
                 if (Physics.Raycast(pointFrom, Vector3.down, out ground, 20))
                 {
-                    if (ground.collider.CompareTag("Ground"))
+                    if (ground.collider.CompareTag("Road"))
                     {
                         GameObject human = Instantiate(humanPrefab, ground.point, Quaternion.identity);
                         human.transform.position += new Vector3(0, human.transform.localScale.y / 2, 0);

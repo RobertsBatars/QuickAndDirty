@@ -21,29 +21,28 @@ public class HumanAI : MonoBehaviour
     {
         RaycastHit wall;
         if (Physics.Raycast(transform.position, transform.forward, out wall, 5)){
-            RotateRandomly();
-        }
-
-        if (transform.position.x >= (resolution.x-1)*10 || transform.position.x < 10 || transform.position.z < 10 || transform.position.z >= (resolution.y - 1) * 10)
-        {
-            RotateRandomly();
+            RotateRandomly(90);
         }
     }
 
     private void FixedUpdate()
     {
+        if (transform.position.x >= (resolution.x - 1) * 10 || transform.position.x < 10 || transform.position.z < 10 || transform.position.z >= (resolution.y - 1) * 10)
+        {
+            RotateRandomly(180);
+        }
         rb.MovePosition(transform.position + transform.forward * speed * Time.fixedDeltaTime);
     }
 
-    private void RotateRandomly()
+    private void RotateRandomly(float angle)
     {
         if (Random.Range(0, 2) == 1)
         {
-            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y + 90, 0);
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y + angle, 0);
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y - 90, 0);
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y - angle, 0);
         }
     }
 }
