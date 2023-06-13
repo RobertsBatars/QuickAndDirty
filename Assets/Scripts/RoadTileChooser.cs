@@ -21,14 +21,6 @@ public class RoadTileChooser : MonoBehaviour
         Tile result;
         List<Tile> acceptableTiles = new List<Tile>();
 
-        foreach (Tile candidate in endTileAcceptedPositions)
-        {
-            if (MatchTile(tile, candidate))
-            {
-                Tile tmp = new Tile(candidate.top, candidate.bottom, candidate.right, candidate.left, candidate.rotation, endTile);
-                //acceptableTiles.Add(tmp);
-            }
-        }
         foreach (Tile candidate in straightTileAcceptedPositions)
         {
             if (MatchTile(tile, candidate))
@@ -67,6 +59,14 @@ public class RoadTileChooser : MonoBehaviour
             {
                 Tile tmp = new Tile(candidate.top, candidate.bottom, candidate.right, candidate.left, candidate.rotation, fourWayTile);
                 acceptableTiles.Add(tmp);
+            }
+        }
+        foreach (Tile candidate in endTileAcceptedPositions)
+        {
+            if (MatchTile(tile, candidate) && acceptableTiles.Count == 0)
+            {
+                Tile tmp = new Tile(candidate.top, candidate.bottom, candidate.right, candidate.left, candidate.rotation, endTile);
+                //acceptableTiles.Add(tmp);
             }
         }
         if (acceptableTiles.Count == 0)

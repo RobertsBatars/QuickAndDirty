@@ -9,13 +9,15 @@ public class CityGenerator : MonoBehaviour
 
     private List<List<Tile>> tiles;
     private RoadTileChooser chooser;
+    private BuildingGenerator buildingGenerator;
 
     // Start is called before the first frame update
     void Start()
     {
         InitTiles();
         chooser = GetComponent<RoadTileChooser>();
-        GenerateCity();
+        buildingGenerator = GetComponent<BuildingGenerator>();
+        //GenerateCity();
     }
 
     void InitTiles()
@@ -34,12 +36,16 @@ public class CityGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GenerateCity();
+        }
     }
 
     void GenerateCity()
     {
         PlaceRoadTile((int)resolution.x / 2, (int)resolution.y / 2);
+        buildingGenerator.SpawnBuildingTiles();
     }
     void PlaceRoadTile(int x, int y)
     {
@@ -56,6 +62,30 @@ public class CityGenerator : MonoBehaviour
         Instantiate(tile.tile, new Vector3(x * 10, 0, y*10), Quaternion.Euler(0, tile.rotation, 0));
         tiles[y][x] = tile;
 
+        SetSurroundingTileValues(x, y, tile);
+
+        buildingGenerator.AddBuildingTiles(tiles, x, y, resolution);
+
+        if (y < resolution.y-1 && tile.top == 1 && tiles[y + 1][x].tile == null)
+        {
+            PlaceRoadTile(x, y + 1);
+        }
+        if (y > 0 && tile.bottom == 1 && tiles[y - 1][x].tile == null)
+        {
+            PlaceRoadTile(x, y - 1);
+        }
+        if (x > 0 && tile.left == 1 && tiles[y][x - 1].tile == null)
+        {
+            PlaceRoadTile(x - 1, y);
+        }
+        if (x < resolution.x-1 && tile.right == 1 && tiles[y][x + 1].tile == null)
+        {
+            PlaceRoadTile(x + 1, y);
+        }
+    }
+
+    public void SetSurroundingTileValues(int x, int y, Tile tile)
+    {
         if (y > 0)
         {
             if (tile.bottom == 0)
@@ -67,7 +97,7 @@ public class CityGenerator : MonoBehaviour
                 tiles[y - 1][x].top = tile.bottom;
             }
         }
-        if (y < resolution.y-1)
+        if (y < resolution.y - 1)
         {
             if (tile.top == 0)
             {
@@ -78,7 +108,7 @@ public class CityGenerator : MonoBehaviour
                 tiles[y + 1][x].bottom = tile.top;
             }
         }
-        if (x < resolution.x-1)
+        if (x < resolution.x - 1)
         {
             if (tile.right == 0)
             {
@@ -99,24 +129,6 @@ public class CityGenerator : MonoBehaviour
             {
                 tiles[y][x - 1].right = tile.left;
             }
-        }
-
-
-        if (y < resolution.y-1 && tile.top == 1 && tiles[y + 1][x].tile == null)
-        {
-            PlaceRoadTile(x, y + 1);
-        }
-        if (y > 0 && tile.bottom == 1 && tiles[y - 1][x].tile == null)
-        {
-            PlaceRoadTile(x, y - 1);
-        }
-        if (x > 0 && tile.left == 1 && tiles[y][x - 1].tile == null)
-        {
-            PlaceRoadTile(x - 1, y);
-        }
-        if (x < resolution.x-1 && tile.right == 1 && tiles[y][x + 1].tile == null)
-        {
-            PlaceRoadTile(x + 1, y);
         }
     }
 }

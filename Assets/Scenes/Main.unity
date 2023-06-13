@@ -578,8 +578,6 @@ MonoBehaviour:
     type: 3}
   fourWayTile: {fileID: 4867163758597302230, guid: 0d3ee7b142552dc4c9919b64020a983b,
     type: 3}
-  emptyTile: {fileID: 4567217643856425815, guid: f66b336271ab52c46be7665dc5bacf02,
-    type: 3}
 --- !u!114 &505737126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,6 +590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996a133b973f4a54fb02231475b4fcd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emptyTile: {fileID: 4567217643856425815, guid: f66b336271ab52c46be7665dc5bacf02,
+    type: 3}
 --- !u!1 &563170139
 GameObject:
   m_ObjectHideFlags: 3
