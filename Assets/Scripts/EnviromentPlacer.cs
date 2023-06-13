@@ -9,6 +9,8 @@ public class EnviromentPlacer : MonoBehaviour
     [Space]
     [SerializeField] private GameObject carPrefab;
     [SerializeField] private int carCount;
+    [Space]
+    [SerializeField] private PickupGenerator pickupGenerator;
 
     private Vector2 resolution;
     // Start is called before the first frame update
@@ -22,9 +24,10 @@ public class EnviromentPlacer : MonoBehaviour
         resolution = _resolution;
         SpawnObjectsOnRoad(humanCount, humanPrefab);
         SpawnObjectsOnRoad(carCount, carPrefab);
+        pickupGenerator.GenerateNewPackage(resolution);
     }
 
-    private void SpawnObjectsOnRoad(int count, GameObject prefab)
+    public void SpawnObjectsOnRoad(int count, GameObject prefab)
     {
         for (int i = 0; i < count; i++)
         {
