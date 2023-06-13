@@ -38,7 +38,7 @@ public class CityGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-           // GenerateCity();
+            //GenerateCity();
         }
     }
 

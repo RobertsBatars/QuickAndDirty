@@ -16,6 +16,9 @@ public class BuildingGenerator : MonoBehaviour
 
     public void AddBuildingTiles(List<List<Tile>> _tiles, int x, int y, Vector2 resolution)
     {
+        if (cityGenerator == null)
+            cityGenerator = GetComponent<CityGenerator>();
+
         tiles = _tiles;
         Tile buildingTile = new Tile(-1, -1, -1, -1, 360, emptyTile);
         if (y < resolution.y - 1 && tiles[y + 1][x].tile == null && CheckEmpty(x, y + 1))
