@@ -25,6 +25,14 @@ public class AI : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Building"))
+        {
+            RotateRandomly(90);
+        }
+    }
+
     private void FixedUpdate()
     {
         if (transform.position.x >= (resolution.x - 1) * 10 || transform.position.x < 10 || transform.position.z < 10 || transform.position.z >= (resolution.y - 1) * 10)

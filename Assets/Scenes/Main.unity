@@ -609,10 +609,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   humanPrefab: {fileID: 2709820326814768261, guid: fbcf18cfeb14f004faca5c9e5cddf9e5,
     type: 3}
-  humanCount: 20
+  humanCount: 50
   carPrefab: {fileID: 6737135800188539678, guid: f49f0cbd8f1b0d94a90c4d165f1d2a7c,
     type: 3}
-  carCount: 20
+  carCount: 50
 --- !u!1 &563170139
 GameObject:
   m_ObjectHideFlags: 3
