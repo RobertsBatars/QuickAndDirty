@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HumanAI : MonoBehaviour
+public class AI : MonoBehaviour
 {
     public float speed = 10;
 
@@ -20,7 +20,7 @@ public class HumanAI : MonoBehaviour
     private void Update()
     {
         RaycastHit wall;
-        if (Physics.Raycast(transform.position, transform.forward, out wall, 5)){
+        if (Physics.Raycast(transform.position, transform.forward, out wall, 10)){
             RotateRandomly(90);
         }
     }
