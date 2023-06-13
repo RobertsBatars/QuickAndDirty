@@ -46,6 +46,7 @@ public class CityGenerator : MonoBehaviour
     {
         PlaceRoadTile((int)resolution.x / 2, (int)resolution.y / 2);
         buildingGenerator.SpawnBuildingTiles();
+        buildingGenerator.SpawnBuildings();
     }
     void PlaceRoadTile(int x, int y)
     {

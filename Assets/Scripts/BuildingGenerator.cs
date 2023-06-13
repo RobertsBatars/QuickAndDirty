@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildingGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject emptyTile;
+    [SerializeField] private GameObject building;
     private List<List<Tile>> tiles;
     private CityGenerator cityGenerator;
 
@@ -70,6 +71,22 @@ public class BuildingGenerator : MonoBehaviour
                 if (tiles[i][j].tile == null || tiles[i][j].rotation == 360)
                 {
                     Instantiate(emptyTile, new Vector3(j * 10, 0, i * 10), Quaternion.identity);
+                }
+            }
+        }
+    }
+
+    public void SpawnBuildings()
+    {
+        for (int i = 0; i < tiles.Count; i++)
+        {
+            for (int j = 0; j < tiles[i].Count; j++)
+            {
+                if (tiles[i][j].tile == null || tiles[i][j].rotation == 360)
+                {
+                    GameObject newBuilding = Instantiate(building, new Vector3(j * 10, 0, i * 10), Quaternion.identity);
+                    newBuilding.transform.localScale += new Vector3(0, Random.Range(5, 15), 0);
+                    newBuilding.transform.position += new Vector3(0, newBuilding.transform.localScale.y/2, 0);
                 }
             }
         }
