@@ -10,6 +10,7 @@ public class CityGenerator : MonoBehaviour
     private List<List<Tile>> tiles;
     private RoadTileChooser chooser;
     private BuildingGenerator buildingGenerator;
+    private EnviromentPlacer enviromentPlacer;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class CityGenerator : MonoBehaviour
         InitTiles();
         chooser = GetComponent<RoadTileChooser>();
         buildingGenerator = GetComponent<BuildingGenerator>();
+        enviromentPlacer = GetComponent<EnviromentPlacer>();
         GenerateCity();
     }
 
@@ -47,6 +49,7 @@ public class CityGenerator : MonoBehaviour
         PlaceRoadTile((int)resolution.x / 2, (int)resolution.y / 2);
         buildingGenerator.SpawnBuildingTiles();
         buildingGenerator.SpawnBuildings();
+        enviromentPlacer.SpawnHumans(resolution, tiles);
     }
     void PlaceRoadTile(int x, int y)
     {
