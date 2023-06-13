@@ -17,7 +17,7 @@ public class CityGenerator : MonoBehaviour
         InitTiles();
         chooser = GetComponent<RoadTileChooser>();
         buildingGenerator = GetComponent<BuildingGenerator>();
-        //GenerateCity();
+        GenerateCity();
     }
 
     void InitTiles()
@@ -38,7 +38,7 @@ public class CityGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GenerateCity();
+           // GenerateCity();
         }
     }
 
