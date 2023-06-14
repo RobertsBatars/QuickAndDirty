@@ -27,6 +27,6 @@ public class ArrowPointer : MonoBehaviour
         }
         Vector3 dir = (target.position - transform.position).normalized;
         Quaternion rotation = Quaternion.LookRotation(dir);
-        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, rotation.eulerAngles.y, transform.eulerAngles.z);
+        transform.rotation = Quaternion.Euler(0, rotation.eulerAngles.y, 0);
     }
 }
