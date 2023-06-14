@@ -12,6 +12,7 @@ public class Package : MonoBehaviour
             if (!player.hasPackage)
             {
                 player.hasPackage = true;
+                player.GetComponent<PlayerScore>().startPos = transform.position;
                 FindObjectOfType<PickupGenerator>().GenerateNewPackage(FindObjectOfType<CityGenerator>().resolution);
                 Destroy(gameObject);
             }

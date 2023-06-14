@@ -11,6 +11,7 @@ public class ExplodeOnCollision : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             Instantiate(explodedPrefab, transform.position, transform.rotation);
+            collision.collider.GetComponent<PlayerScore>().score += 10;
             Destroy(gameObject);
         }
     }
