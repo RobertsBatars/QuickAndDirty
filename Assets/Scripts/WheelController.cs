@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class WheelController : MonoBehaviour
 {
+    [SerializeField] private bool player1;
+    [Space]
     public float acceleration = 500f;
     public float breakForce = 300f;
     public float maxTurnAngle = 15f;
-
     [Space]
     [SerializeField] WheelCollider frontRight;
     [SerializeField] WheelCollider frontLeft;
@@ -26,17 +27,42 @@ public class WheelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        currentBreakForce = 0;
+
+        if (player1)
         {
-            currentBreakForce = breakForce;
+            currentAcceleration = acceleration * Input.GetAxis("Vertical");
+            currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
+            if (Input.GetKey(KeyCode.Space))
+            {
+                currentBreakForce = breakForce;
+            }
         }
         else
         {
-            currentBreakForce = 0;
+            currentAcceleration = 0;
+            currentTurnAngle = 0;
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                currentAcceleration -= acceleration;
+            }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                currentAcceleration += acceleration;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                currentTurnAngle -= maxTurnAngle;
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                currentTurnAngle += maxTurnAngle;
+            }
+            if (Input.GetKey(KeyCode.Keypad0))
+            {
+                currentBreakForce = breakForce;
+            }
         }
-
-        currentAcceleration = acceleration * Input.GetAxis("Vertical");
-        currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
     }
 
     private void FixedUpdate()
