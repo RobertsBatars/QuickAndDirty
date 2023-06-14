@@ -35,5 +35,6 @@ public class PlayerWeapons : MonoBehaviour
     private void PlaceBomb()
     {
         Instantiate(bombPrefab, transform.position, Quaternion.identity);
+        inventory.bombCount--;
     }
 }

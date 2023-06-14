@@ -13,4 +13,12 @@ public class SpawnCar : MonoBehaviour
         generator = FindObjectOfType<CityGenerator>();
         transform.position = new Vector3(generator.resolution.x * 10 / 2, 0, generator.resolution.y * 10 / 2) + spawnOffset;
     }
+
+    private void Update()
+    {
+        if (transform.position.y < -5)
+        {
+            transform.position = new Vector3(generator.resolution.x * 10 / 2, 0, generator.resolution.y * 10 / 2) + spawnOffset;
+        }
+    }
 }
