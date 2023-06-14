@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInventoryLogic : MonoBehaviour
 {
     [HideInInspector] public bool hasPackage;
+    [HideInInspector] public int bombCount = 0;
     // Start is called before the first frame update
     void Start()
     {
