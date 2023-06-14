@@ -6,6 +6,8 @@ public class BuildingGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject emptyTile;
     [SerializeField] private GameObject building;
+    [Space]
+    [SerializeField] private float buildingProbability;
     private List<List<Tile>> tiles;
     private CityGenerator cityGenerator;
 
@@ -23,7 +25,7 @@ public class BuildingGenerator : MonoBehaviour
         Tile buildingTile = new Tile(-1, -1, -1, -1, 360, emptyTile);
         if (y < resolution.y - 1 && tiles[y + 1][x].tile == null && CheckEmpty(x, y + 1))
         {
-            if (Random.Range(0, 10) >= 7)
+            if (Random.Range(0, 1f) <= buildingProbability)
             {
                 tiles[y + 1][x] = buildingTile;
                 cityGenerator.SetSurroundingTileValues(x, y+1, buildingTile);
@@ -31,7 +33,7 @@ public class BuildingGenerator : MonoBehaviour
         }
         if (y > 0 && tiles[y - 1][x].tile == null && CheckEmpty(x, y - 1))
         {
-            if (Random.Range(0, 10) >= 7)
+            if (Random.Range(0, 1f) <= buildingProbability)
             {
                 tiles[y - 1][x] = buildingTile;
                 cityGenerator.SetSurroundingTileValues(x, y - 1, buildingTile);
@@ -39,7 +41,7 @@ public class BuildingGenerator : MonoBehaviour
         }
         if (x > 0 && tiles[y][x - 1].tile == null && CheckEmpty(x - 1, y))
         {
-            if (Random.Range(0, 10) >= 7)
+            if (Random.Range(0, 1f) <= buildingProbability)
             {
                 tiles[y][x - 1] = buildingTile;
                 cityGenerator.SetSurroundingTileValues(x-1, y, buildingTile);
@@ -47,7 +49,7 @@ public class BuildingGenerator : MonoBehaviour
         }
         if (x < resolution.x - 1 && tiles[y][x + 1].tile == null && CheckEmpty(x + 1, y))
         {
-            if (Random.Range(0, 10) >= 7)
+            if (Random.Range(0, 1f) <= buildingProbability)
             {
                 tiles[y][x + 1] = buildingTile;
                 cityGenerator.SetSurroundingTileValues(x+1, y, buildingTile);

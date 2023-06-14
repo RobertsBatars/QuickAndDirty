@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     [SerializeField] private float explosionForce;
+    [SerializeField] private GameObject explosion;
     private bool activated = false;
 
     private void OnTriggerExit(Collider other)
@@ -19,6 +20,7 @@ public class Bomb : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Entity") && activated)
         {
+            Instantiate(explosion, transform.position, Quaternion.identity);
             other.attachedRigidbody.AddExplosionForce(explosionForce, transform.position, GetComponent<SphereCollider>().radius*2);
             Destroy(gameObject);
         }

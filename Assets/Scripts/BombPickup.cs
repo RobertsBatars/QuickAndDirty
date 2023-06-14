@@ -9,6 +9,7 @@ public class BombPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerInventoryLogic>().bombCount++;
+            FindAnyObjectByType<PickupGenerator>().GenerateNewBomb();
             Destroy(gameObject);
         }
     }

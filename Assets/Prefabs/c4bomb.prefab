@@ -2407,6 +2407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionForce: 10000000
+  explosion: {fileID: 100006, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
 --- !u!135 &840439855944054041
 SphereCollider:
   m_ObjectHideFlags: 0

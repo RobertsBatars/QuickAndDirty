@@ -9,6 +9,8 @@ public class PickupGenerator : MonoBehaviour
     [SerializeField] private GameObject bombPickupPrefab;
     [Space]
     [SerializeField] private int bombCount;
+
+    private Vector2 resolutionSt;
     
     public void GenerateNewPackage(Vector2 resolution)
     {
@@ -17,10 +19,16 @@ public class PickupGenerator : MonoBehaviour
 
     public void GenerateBombs(Vector2 resolution)
     {
+        resolutionSt = resolution;
         for (int i = 0; i < bombCount; i++)
         {
-            SpawnPrefab(bombPickupPrefab, resolution, 0);
+            GenerateNewBomb();
         }
+    }
+
+    public void GenerateNewBomb()
+    {
+        SpawnPrefab(bombPickupPrefab, resolutionSt, 0);
     }
 
     private void SpawnPrefab(GameObject prefab, Vector2 resolution, float height)
