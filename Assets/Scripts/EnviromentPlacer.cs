@@ -25,6 +25,7 @@ public class EnviromentPlacer : MonoBehaviour
         SpawnObjectsOnRoad(humanCount, humanPrefab);
         SpawnObjectsOnRoad(carCount, carPrefab);
         pickupGenerator.GenerateNewPackage(resolution);
+        pickupGenerator.GenerateNewDropoff(resolution);
     }
 
     public void SpawnObjectsOnRoad(int count, GameObject prefab)

@@ -8,8 +8,13 @@ public class Package : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerInventoryLogic>().hasPackage = true;
-            Destroy(gameObject);
+            PlayerInventoryLogic player = other.GetComponent<PlayerInventoryLogic>();
+            if (!player.hasPackage)
+            {
+                player.hasPackage = true;
+                FindObjectOfType<PickupGenerator>().GenerateNewPackage(FindObjectOfType<CityGenerator>().resolution);
+                Destroy(gameObject);
+            }
         }
     }
 }

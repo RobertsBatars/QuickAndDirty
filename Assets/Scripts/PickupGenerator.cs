@@ -18,12 +18,15 @@ public class PickupGenerator : MonoBehaviour
                 if (ground.collider.CompareTag("Road"))
                 {
                     GameObject obj = Instantiate(boxPrefab, ground.point, Quaternion.identity);
-                    obj.transform.position += new Vector3(0, obj.transform.localScale.y / 2, 0);
+                    obj.transform.position += new Vector3(0, obj.transform.localScale.y, 0);
                     break;
                 }
             }
         }
+    }
 
+    public void GenerateNewDropoff(Vector2 resolution)
+    {
         while (true)
         {
             Vector3 pointFrom = new Vector3(Random.Range(0, resolution.x * 10), 10, Random.Range(0, resolution.y * 10));
@@ -33,7 +36,7 @@ public class PickupGenerator : MonoBehaviour
                 if (ground.collider.CompareTag("Road"))
                 {
                     GameObject obj = Instantiate(dropoffPrefab, ground.point, Quaternion.identity);
-                    obj.transform.position += new Vector3(0, obj.transform.localScale.y / 2, 0);
+                    obj.transform.position += new Vector3(0, 0, 0);
                     break;
                 }
             }

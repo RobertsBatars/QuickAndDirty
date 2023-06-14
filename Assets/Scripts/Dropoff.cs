@@ -12,7 +12,7 @@ public class Dropoff : MonoBehaviour
             if (player.hasPackage)
             {
                 player.hasPackage = false;
-                FindObjectOfType<PickupGenerator>().GenerateNewPackage(FindObjectOfType<CityGenerator>().resolution);
+                FindObjectOfType<PickupGenerator>().GenerateNewDropoff(FindObjectOfType<CityGenerator>().resolution);
                 Destroy(gameObject);
             }
         }
