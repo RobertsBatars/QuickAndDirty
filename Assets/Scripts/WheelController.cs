@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WheelController : MonoBehaviour
 {
-    [SerializeField] private bool player1;
+    public bool player1;
     [Space]
     public float acceleration = 500f;
     public float breakForce = 300f;
