@@ -1099,7 +1099,7 @@ MonoBehaviour:
     type: 3}
   bombPickupPrefab: {fileID: 1362785301592380170, guid: f1d0393ffaf477347a659033f5cb94ff,
     type: 3}
-  bombCount: 25
+  bombCount: 50
 --- !u!1 &612168988
 GameObject:
   m_ObjectHideFlags: 0

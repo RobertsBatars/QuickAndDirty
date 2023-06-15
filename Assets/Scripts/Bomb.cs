@@ -13,6 +13,7 @@ public class Bomb : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             activated = true;
+            GetComponentInChildren<Light>().color = Color.green;
         }
     }
 
