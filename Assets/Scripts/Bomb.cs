@@ -23,6 +23,7 @@ public class Bomb : MonoBehaviour
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
             other.attachedRigidbody.AddExplosionForce(explosionForce, transform.position, GetComponent<SphereCollider>().radius*2);
+            FindObjectOfType<AudioManager>().PlayExplosionSound();
             Destroy(gameObject);
         }
     }

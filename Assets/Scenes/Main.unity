@@ -1618,7 +1618,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2266,6 +2266,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f21e43fed32d8f498b7d9ec89f412da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  car1Audio: {fileID: 1214014988}
+  car2Audio: {fileID: 627798474}
+  explosionAudio: {fileID: 1541790056}
+  minSpeed: 1
+  maxSpeed: 50
+  minPitch: 1
+  maxPitch: 10
 --- !u!81 &1078351124
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2410,7 +2417,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3045,8 +3052,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: a3df454c0c7ea9c4aa0701dfd13f70ed, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
