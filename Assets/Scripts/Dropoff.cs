@@ -13,7 +13,7 @@ public class Dropoff : MonoBehaviour
             {
                 player.hasPackage = false;
                 PlayerScore score = player.GetComponent<PlayerScore>();
-                score.score += (transform.position - score.startPos).magnitude;
+                score.score += 100;
                 FindObjectOfType<PickupGenerator>().GenerateNewDropoff(FindObjectOfType<CityGenerator>().resolution);
                 Destroy(gameObject);
             }

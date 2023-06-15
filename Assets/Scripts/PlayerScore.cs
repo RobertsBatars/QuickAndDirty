@@ -6,5 +6,4 @@ public class PlayerScore : MonoBehaviour
 {
     public float score;
     public string playerName;
-    [HideInInspector] public Vector3 startPos;
 }

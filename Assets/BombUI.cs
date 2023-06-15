@@ -30,6 +30,7 @@ public class BombUI : MonoBehaviour
             txt += playerNames[i].playerName + ": " + player.bombCount.ToString() + "<br>";
             i++;
         }
+        txt += "Press shift to plant";
         text.text = txt;
     }
 }
