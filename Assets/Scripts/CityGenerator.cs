@@ -53,7 +53,7 @@ public class CityGenerator : MonoBehaviour
     }
     void PlaceRoadTile(int x, int y)
     {
-        if (x >= resolution.x || x < 0 || y < 0 || y >= resolution.y)
+        if (x >= resolution.x-1 || x < 1 || y < 1 || y >= resolution.y-1)
         {
             return;
         }

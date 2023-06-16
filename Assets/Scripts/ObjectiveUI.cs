@@ -13,9 +13,9 @@ public class ObjectiveUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<PlayerInventoryLogic> players = new List<PlayerInventoryLogic>(FindObjectsOfType<PlayerInventoryLogic>());
-        player1 = players[1];
-        player2 = players[0];
+        List<PlayerInventoryLogic> players = new List<PlayerInventoryLogic>(FindObjectsByType<PlayerInventoryLogic>(FindObjectsSortMode.InstanceID));
+        player1 = players[0];
+        player2 = players[1];
     }
 
     // Update is called once per frame
