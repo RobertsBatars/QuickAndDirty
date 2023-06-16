@@ -15,6 +15,7 @@ public class Dropoff : MonoBehaviour
                 PlayerScore score = player.GetComponent<PlayerScore>();
                 score.score += 100;
                 FindObjectOfType<PickupGenerator>().GenerateNewDropoff(FindObjectOfType<CityGenerator>().resolution);
+                FindObjectOfType<AudioManager>().PlaySuccessSound();
                 Destroy(gameObject);
             }
         }

@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource car1Audio;
     [SerializeField] private AudioSource car2Audio;
     [SerializeField] private AudioSource explosionAudio;
+    [SerializeField] private AudioSource successAudio;
     [Space]
     [SerializeField] private float minSpeed;
     [SerializeField] private float maxSpeed;
@@ -76,5 +77,10 @@ public class AudioManager : MonoBehaviour
     public void PlayExplosionSound()
     {
         explosionAudio.Play();
+    }
+
+    public void PlaySuccessSound()
+    {
+        successAudio.Play();
     }
 }
